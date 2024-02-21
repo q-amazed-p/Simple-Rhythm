@@ -1,0 +1,110 @@
+﻿  main.cpp
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(191,80): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(195,94): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         and
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,97): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         and
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(275,75): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(283,50): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(283,50): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(283,50): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(283,50): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(283,50): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(284,49): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(284,49): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(284,49): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(284,49): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(284,49): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(285,49): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(285,49): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(285,49): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(285,49): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(285,49): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,79): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,79): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,79): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,79): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,79): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,49): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,49): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,49): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,49): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(295,49): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,78): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,78): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,78): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,78): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,78): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,52): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,52): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,52): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(319,52): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(326,48): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(326,48): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(326,48): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(326,48): warning C4244:             T=unsigned int
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(326,48): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,106): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,106): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,106): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,106): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,106): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,85): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,85): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,85): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(340,85): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,110): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,110): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,110): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,110): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,110): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,89): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,89): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,89): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,89): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(345,89): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,110): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,110): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,110): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,110): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,110): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,89): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,89): warning C4244:         with
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,89): warning C4244:         [
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,89): warning C4244:             T=float
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(346,89): warning C4244:         ]
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(379,48): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(379,37): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(412,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(417,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(585,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(601,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(617,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(633,23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(722,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(738,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(754,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(770,23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(853,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(862,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(871,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(880,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(918,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\main.cpp(954,43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  SimpleRhythm.vcxproj -> C:\Users\Amazed\Projects\SFML\SimpleRhythm\SimpleRhythm\x64\Debug\SimpleRhythm.exe
