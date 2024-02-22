@@ -394,569 +394,574 @@ int main()
 
     if (menu(gameView) == 0) gameView.close();
 
-initialize:                    //ENTRY POINT FROM MENU. GAME START (RE)GENERATES HERE
+                       
+    while (gameView.isOpen())               //ENTRY POINT FROM MENU. GAME START (RE)GENERATES HERE
+    {
+        bool initialized = false;
 
-    Clock gameStartTimer;
-    Clock frameDeltaTimer;
-    float frameDeltaT = 0;
+        Clock gameStartTimer;
+        Clock frameDeltaTimer;
+        float frameDeltaT = 0;
 
-    std::list<Ring*> shades = list<Ring*>();
-    Bar scoreBar = Bar(viewScale);
+        std::list<Ring*> shades = list<Ring*>();
+        Bar scoreBar = Bar(viewScale);
 
-    queue<float> pattern;
+        queue<float> pattern;
 
 #ifdef NDEBUG
-    float oneBeatT = 0.47928;     //Release Value
-    pattern.push(6 * oneBeatT);
+        float oneBeatT = 0.47928;     //Release Value
+        pattern.push(6 * oneBeatT);
 #else
-    float oneBeatT = 0.47935;       //Debug Value
-    pattern.push(6.1 * oneBeatT);
-    for (int i = 350; i > 0; i--)pattern.push(oneBeatT);  //calibrator
+        float oneBeatT = 0.47928;       //Debug Value
+        pattern.push(6.1 * oneBeatT);
+        //for (int i = 350; i > 0; i--)pattern.push(oneBeatT);  //calibrator
 #endif
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    //drop
+        //drop
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.75 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.75 * oneBeatT);
 
 
-    //transition
+        //transition
 
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(2.f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(1.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(2.f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(1.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.75f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.75f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
 
-    //drop2
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5 * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.75 * oneBeatT);
+        //drop2
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5 * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.75 * oneBeatT);
 
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.25f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.25f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
 
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(1.5 * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(1.5 * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(1.5 * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(oneBeatT);
-    pattern.push(1.5 * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
-    pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(1.5 * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(1.5 * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(1.5 * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(oneBeatT);
+        pattern.push(1.5 * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
+        pattern.push(0.5f * oneBeatT);
 
-    pattern.push(20 * oneBeatT);
+        pattern.push(20 * oneBeatT);
 
-    float patternProgress = pattern.front();
+        float patternProgress = pattern.front();
 
-    rave.play();
-    rave.setPlayingOffset(seconds(25.f));
+        rave.play();
+        rave.setPlayingOffset(seconds(25.f));
 
-    while (gameView.isOpen())
-    {
-        sf::Event event;
-        while (gameView.pollEvent(event))
+        initialized = true;
+        while (initialized)
         {
-            if (event.type == Event::Closed)
+            sf::Event event;
+            while (gameView.pollEvent(event))
             {
-                gameView.close();
-            }
-
-            if (event.type == Event::KeyPressed || event.type == Event::KeyReleased)
-            {
-                if (Keyboard::isKeyPressed(Keyboard::Space))
+                if (event.type == Event::Closed)
                 {
-                    beat.play();
-                    if (Assessor::ringInEclipse)
+                    rave.stop();
+                    gameView.close();
+                }
+
+                if (event.type == Event::KeyPressed || event.type == Event::KeyReleased)
+                {
+                    if (Keyboard::isKeyPressed(Keyboard::Space))
                     {
-                        tokenStar.Shine(Assessor::ringPerfect);
-                        if (Assessor::ringPerfect)
+                        beat.play();
+                        if (Assessor::ringInEclipse)
                         {
-                            scoreBar.AddPoints(1);
-                            Assessor::ringPerfect = false;
+                            tokenStar.Shine(Assessor::ringPerfect);
+                            if (Assessor::ringPerfect)
+                            {
+                                scoreBar.AddPoints(1);
+                                Assessor::ringPerfect = false;
+                            }
+                            else scoreBar.AddPoints(0.8f);
+                            shades.remove(Assessor::eclipsedRing);
+                            Assessor::eclipsedRing = nullptr;
+                            Assessor::ringInEclipse = false;
                         }
-                        else scoreBar.AddPoints(0.8);
-                        shades.remove(Assessor::eclipsedRing);
-                        Assessor::eclipsedRing = nullptr;
-                        Assessor::ringInEclipse = false;
+                        else if (!scoreBar.AddPoints(-0.5f))
+                        {
+                            initialized = false;                           //requires cleanup
+                        }
                     }
-                    else scoreBar.AddPoints(-0.5);
                 }
             }
-        }
 
-        if (!shades.empty())
-        {
-            Ring* binptr = nullptr;
+            if (!shades.empty())
+            {
+                Ring* binptr = nullptr;
+                for (Ring* o : shades)
+                {
+                    if (!(*o).ProgressScale(1 + 1.6 * frameDeltaT))
+                    {
+                        binptr = o;
+                        if (!scoreBar.AddPoints(-1))
+                        {
+                            initialized = false;                           //requires cleanup
+                        }
+                    }
+                }
+                if (binptr != nullptr) shades.remove(binptr);
+                //delete binptr;
+            }
+
+            tokenStar.DimShine(frameDeltaT);
+
+            gameView.clear();
+            gameView.draw(background);
+            scoreBar.GetDrawn(gameView);
             for (Ring* o : shades)
             {
-                if (!(*o).ProgressScale(1 + 1.6 * frameDeltaT))
-                {
-                    binptr = o;
-                    if (!scoreBar.AddPoints(-1))
-                    {
-                        rave.stop();
-                        if (menu(gameView) == 0) gameView.close();
-                        shades.clear();
-                        goto initialize;                           //requires cleanup
-                    }
-                }
+                gameView.draw((*o).GetDrawable());
             }
-            if (binptr != nullptr) shades.remove(binptr);
-            //delete binptr;
-        }
+            gameView.draw(tracker.GetDrawable());
+            tokenStar.GetDrawn(gameView);
 
-        tokenStar.DimShine(frameDeltaT);
-
-        gameView.clear();
-        gameView.draw(background);
-        scoreBar.GetDrawn(gameView);
-        for (Ring* o : shades)
-        {
-            gameView.draw((*o).GetDrawable());
-        }
-        gameView.draw(tracker.GetDrawable());
-        tokenStar.GetDrawn(gameView);
-
-        /*Time since last frame is read.
-             Computations sensitive to precision of this value are performed
-          Frame time clock is reset. */
-        frameDeltaT = frameDeltaTimer.getElapsedTime().asSeconds();
+            /*Time since last frame is read.
+                 Computations sensitive to precision of this value are performed
+              Frame time clock is reset. */
+            frameDeltaT = frameDeltaTimer.getElapsedTime().asSeconds();
             patternProgress -= frameDeltaT;
             if (patternProgress < 0)
             {
@@ -970,14 +975,16 @@ initialize:                    //ENTRY POINT FROM MENU. GAME START (RE)GENERATES
                 else                                               //between beats (when average of imperfections
                 {                                                 //is not factored in in the oneBeatT)
                     playerScore = scoreBar.GetScore();
-                    rave.stop();
-                    if (menu(gameView) == 0) gameView.close();
-                    shades.clear();
-                    goto initialize;
+                    initialized = false;
                 }
             }
-        frameDeltaTimer.restart();
-        gameView.display();
+            frameDeltaTimer.restart();
+            gameView.display();
+        }
+        rave.stop();
+        if (menu(gameView) == 0) gameView.close();
+        shades.clear();
     }
+    rave.stop();
     return 0;
 }
