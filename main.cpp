@@ -410,7 +410,7 @@ int main()
 
 #ifdef NDEBUG
         float oneBeatT = 0.47928;     //Release Value
-        pattern.push(6 * oneBeatT);
+        pattern.push(6.1 * oneBeatT);
 #else
         float oneBeatT = 0.47928;       //Debug Value
         pattern.push(6.1 * oneBeatT);
@@ -943,7 +943,7 @@ int main()
                     }
                 }
                 if (binptr != nullptr) shades.remove(binptr);
-                //delete binptr;
+                delete binptr;
             }
 
             tokenStar.DimShine(frameDeltaT);
